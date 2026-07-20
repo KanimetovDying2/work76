@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef } from "react";
 import type { Message } from "./types";
-import axiosApi from "./axios";
+import axiosApi from "./axiosApi";
 import MessageList from "./components/MessageList";
 
 const App = () => {
@@ -33,7 +33,11 @@ const App = () => {
     return () => clearInterval(interval);
   }, []);
 
-  return <MessageList messages={allMessages} />;
+  return (
+    <div>
+      <MessageList messages={allMessages} />
+    </div>
+  );
 };
 
 export default App;
