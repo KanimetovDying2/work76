@@ -1,7 +1,9 @@
 import { useEffect, useState, useRef } from "react";
 import type { Message } from "./types";
+import { Box } from "@mui/material";
 import axiosApi from "./axiosApi";
 import MessageList from "./components/MessageList";
+import Form from "./components/Form";
 
 const App = () => {
   const [allMessages, setAllMessages] = useState<Message[]>([]);
@@ -35,6 +37,18 @@ const App = () => {
 
   return (
     <div>
+      <Box
+        sx={{
+          position: "sticky",
+          bottom: 0,
+          backgroundColor: "white",
+          padding: 2,
+          zIndex: 1000,
+          borderTop: "1px solid #ccc",
+        }}
+      >
+        <Form />
+      </Box>
       <MessageList messages={allMessages} />
     </div>
   );
