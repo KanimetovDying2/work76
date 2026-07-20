@@ -10,14 +10,19 @@ interface Props {
 }
 
 const MessageItem = ({ message }: Props) => {
+  const date = dayjs(message.datetime);
+  const now = dayjs();
+
+  const formatTemplate = date.year() === now.year() ? "DD.MM HH:mm" : "DD.MM.YYYY HH:mm";
   const formattedDate = dayjs(message.datetime).calendar(null, {
     sameDay: "[Today at] HH:mm",
     nextDay: "[Tomorrow]",
     nextWeek: "dddd",
     lastDay: "[Yesterday at] HH:mm",
-    lastWeek: "DD.MM.YYYY",
-    sameElse: "DD.MM.YYYY",
+    lastWeek: formatTemplate,
+    sameElse: formatTemplate,
   });
+
   return (
     <Card sx={{ marginBottom: 2 }}>
       <CardContent>

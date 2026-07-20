@@ -33,7 +33,7 @@ const App = () => {
     return () => clearInterval(interval);
   }, []);
 
-  return <div></div>;
+  return <MessageList messages={allMessages} />;
 };
 
 export default App;
